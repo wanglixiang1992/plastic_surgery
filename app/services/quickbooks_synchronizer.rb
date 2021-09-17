@@ -10,7 +10,7 @@ class QuickbooksSynchronizer
     qbo_invoice.line_items           = get_line_items(items: invoice.line_items)
     qbo_invoice.due_date             = invoice.due_date
     qbo_invoice.txn_date             = invoice.invoice_date
-    qbo_invoice.customer_id          = invoice.customer_id
+    qbo_invoice.customer_id          = invoice.customer.qbo_id
     qbo_invoice.doc_number           = invoice.invoice_number
 
     invoice_service              = Quickbooks::Service::Invoice.new
