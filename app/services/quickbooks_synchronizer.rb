@@ -41,12 +41,14 @@ class QuickbooksSynchronizer
     service.access_token  = access_token
 
     qbo_customer = service.find_by(:family_name, customer.name)
-    if qbo_customer.blank?
+    if qbo_customer.count.zero?
       qbo_customer = Quickbooks::Model::Customer.new
       qbo_customer.family_name = customer.name
       qbo_customer = service.create(qbo_customer)
+      customer.update!(qbo_id: qbo_customer.id)
+    else
+      customer.update!(qbo_id: qbo_customer.entries.first.id)
     end
-    customer.update!(qbo_id: qbo_customer.entries.first.id)
   end
 
   def get_line_items(items:)
