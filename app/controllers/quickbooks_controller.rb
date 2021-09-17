@@ -3,7 +3,7 @@
 class QuickbooksController < ApplicationController
   def authenticate
     redirect_uri = oauth_callback_quickbooks_url
-    grant_url = QB_OAUTH_CONSUMER.auth_code.authorize_url(
+    grant_url = QBO_OAUTH_CONSUMER.auth_code.authorize_url(
       redirect_uri: redirect_uri,
       response_type: 'code',
       state: SecureRandom.hex(12), scope: 'com.intuit.quickbooks.accounting'
@@ -18,7 +18,7 @@ class QuickbooksController < ApplicationController
 
   def oauth_callback
     redirect_uri = oauth_callback_quickbooks_url
-    response = QB_OAUTH_CONSUMER.auth_code.get_token(params[:code], redirect_uri: redirect_uri)
+    response = QBO_OAUTH_CONSUMER.auth_code.get_token(params[:code], redirect_uri: redirect_uri)
     quickbooks_credential = QuickbooksCredential.find_or_initialize_by(realm_id: params[:realmId])
     quickbooks_credential.access_token = response&.token
     quickbooks_credential.access_token_expires_at = Time.zone.now
