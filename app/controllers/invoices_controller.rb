@@ -18,7 +18,7 @@ class InvoicesController < ApplicationController
     authorize_action
 
     invoice_creator = InvoiceCreator.new
-    result = invoice_creator.call(invoice_params, line_item_params)
+    invoice_creator.call(invoice_params, line_item_params)
     if invoice_creator.success?
       redirect_to invoices_path, notice: I18n.t('invoice.created')
     else

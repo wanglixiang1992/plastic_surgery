@@ -25,7 +25,7 @@ class InvoiceCreator
   end
 
   private
-  
+
   def add_error(message)
     @errors << message
   end

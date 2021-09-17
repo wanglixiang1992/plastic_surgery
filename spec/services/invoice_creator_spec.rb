@@ -17,13 +17,15 @@ RSpec.describe InvoiceCreator, type: :service do
   describe '#call' do
     context 'with valid' do
       it 'creates new invoice' do
-        result = service.call(valid_invoice.except(:line_item).merge(customer_id: customer.id), valid_invoice[:line_item])
+        service.call(valid_invoice.except(:line_item).merge(customer_id: customer.id),
+                     valid_invoice[:line_item])
         expect(service.success?).to be_truthy
         expect(service.invoice.invoice_number).to eq(valid_invoice[:invoice_number])
       end
 
       it 'creates line item' do
-        result = service.call(valid_invoice.except(:line_item).merge(customer_id: customer.id), valid_invoice[:line_item])
+        service.call(valid_invoice.except(:line_item).merge(customer_id: customer.id),
+                     valid_invoice[:line_item])
         expect(service.success?).to be_truthy
         expect(service.invoice.line_items.first.description).to eq(valid_invoice[:line_item][:description])
       end
@@ -31,7 +33,7 @@ RSpec.describe InvoiceCreator, type: :service do
 
     context 'with invalid' do
       it 'returns error' do
-        result = service.call(invalid_invoice.except(:line_item), invalid_invoice[:line_item])
+        service.call(invalid_invoice.except(:line_item), invalid_invoice[:line_item])
         expect(service.success?).to be_falsey
       end
     end

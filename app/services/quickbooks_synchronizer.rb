@@ -23,7 +23,8 @@ class QuickbooksSynchronizer
   private
 
   def access_token
-    OAuth2::AccessToken.new(QB_OAUTH_CONSUMER, quickbooks_credential.access_token, refresh_token: quickbooks_credential.access_token)
+    OAuth2::AccessToken.new(QB_OAUTH_CONSUMER, quickbooks_credential.access_token,
+                            refresh_token: quickbooks_credential.access_token)
   end
 
   def realm_id
