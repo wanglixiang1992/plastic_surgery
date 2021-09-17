@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2018-03-14T20:10:10.659-07:00">
+  <Customer domain="QBO" sparse="false">
+    <Id>76</Id>
+    <SyncToken>0</SyncToken>
+    <MetaData>
+      <CreateTime>2018-03-14T20:10:10-07:00</CreateTime>
+      <LastUpdatedTime>2018-03-14T20:10:10-07:00</LastUpdatedTime>
+    </MetaData>
+    <FullyQualifiedName>Test 123-a714f2</FullyQualifiedName>
+    <CompanyName>Test 123-a714f2</CompanyName>
+    <DisplayName>Test 123-a714f2</DisplayName>
+    <PrintOnCheckName>Test 123-a714f2</PrintOnCheckName>
+    <Active>true</Active>
+    <PrimaryEmailAddr>
+      <Address>test@example.com</Address>
+    </PrimaryEmailAddr>
+    <DefaultTaxCodeRef>2</DefaultTaxCodeRef>
+    <Taxable>true</Taxable>
+    <Job>false</Job>
+    <BillWithParent>false</BillWithParent>
+    <Balance>0</Balance>
+    <BalanceWithJobs>0</BalanceWithJobs>
+    <CurrencyRef name="United States Dollar">USD</CurrencyRef>
+    <PreferredDeliveryMethod>Print</PreferredDeliveryMethod>
+  </Customer>
+</IntuitResponse>

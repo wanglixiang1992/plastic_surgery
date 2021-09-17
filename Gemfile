@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
   gem 'test-prof'
+  gem 'webmock'
 end
 
 group :development do

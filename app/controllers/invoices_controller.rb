@@ -17,11 +17,12 @@ class InvoicesController < ApplicationController
   def create
     authorize_action
 
-    invoice = Invoice.create(invoice_params)
-    if invoice.save
+    invoice_creator = InvoiceCreator.new
+    result = invoice_creator.call(invoice_params, line_item_params)
+    if invoice_creator.success?
       redirect_to invoices_path, notice: I18n.t('invoice.created')
     else
-      render :new, locals: { invoice: invoice, customers: customers }
+      render :new, locals: { invoice: invoice_creator.invoice, customers: customers }
     end
   end
 
@@ -37,9 +38,12 @@ class InvoicesController < ApplicationController
 
   def invoice_params
     params.require(:invoice).permit(
-      :customer_id, :invoice_date, :due_date, :amount, :memo, :invoice_number, :account_number,
-      line_items_attributes: %i[id description quantity unit_price]
+      :customer_id, :invoice_date, :due_date, :amount, :memo, :invoice_number, :account_number
     )
+  end
+
+  def line_item_params
+    params.require(:invoice).require(:line_item).permit(:description, :quantity, :unit_price)
   end
 
   def customers

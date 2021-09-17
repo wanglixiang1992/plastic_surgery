@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2021_09_17_023118) do
     t.integer "quantity", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["description"], name: "index_line_items_on_description", unique: true
     t.index ["invoice_id"], name: "index_line_items_on_invoice_id"
   end
 

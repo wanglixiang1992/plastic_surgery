@@ -5,12 +5,12 @@ require 'rails_helper'
 RSpec.describe InvoicesController, type: :controller do
   before do
     allow(InvoicePolicy).to receive(:new).and_return(invoice_policy)
-    allow(QuickbooksSyncService).to receive(:new).and_return(qbo_sync_service)
+    allow(QuickbooksSynchronizer).to receive(:new).and_return(sync_service)
   end
 
   let(:customer) { create(:customer) }
   let(:invoice_policy) { instance_double(InvoicePolicy, index?: true, create?: true) }
-  let(:qbo_sync_service) { instance_double(QuickbooksSyncService, sync_customer: true, sync_invoice: true) }
+  let(:sync_service) { instance_double(QuickbooksSynchronizer, sync_invoice: true) }
 
   let(:valid_invoice) { eval(File.read('./spec/data/invoice/valid.json')) }
   let(:invalid_invoice) { eval(File.read('./spec/data/invoice/invalid.json')) }

@@ -4,7 +4,7 @@ class LineItem < ApplicationRecord
   belongs_to :invoice
 
   validates :invoice_id, presence: true
-  validates :description, presence: true, uniqueness: true
+  validates :description, presence: true
 
   def price
     unit_price * quantity

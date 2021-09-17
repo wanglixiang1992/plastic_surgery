@@ -18,7 +18,7 @@ class QuickbooksController < ApplicationController
 
   def oauth_callback
     redirect_uri = oauth_callback_quickbooks_url
-    response = oauth2_client.auth_code.get_token(params[:code], redirect_uri: redirect_uri)
+    response = QB_OAUTH_CONSUMER.auth_code.get_token(params[:code], redirect_uri: redirect_uri)
     quickbooks_credential = QuickbooksCredential.find_or_initialize_by(realm_id: params[:realm_id])
     quickbooks_credential.access_token = response&.token
     quickbooks_credential.access_token_expires_at = Time.zone.now
@@ -36,17 +36,5 @@ class QuickbooksController < ApplicationController
 
   def quickbooks_credential
     @quickbooks_credential ||= QuickbooksCredential.find(params[:id])
-  end
-
-  def oauth2_client
-    OAuth2::Client.new(ENV['OAUTH_CLIENT_ID'], ENV['OAUTH_CLIENT_SECRET'], oauth_params)
-  end
-
-  def oauth_params
-    {
-      site: 'https://appcenter.intuit.com/connect/oauth2',
-      authorize_url: 'https://appcenter.intuit.com/connect/oauth2',
-      token_url: 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer'
-    }
   end
 end

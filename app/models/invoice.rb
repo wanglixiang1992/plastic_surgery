@@ -7,11 +7,7 @@ class Invoice < ApplicationRecord
   validates :invoice_date, presence: true
   validates :amount, presence: true, numericality: { greater_than: 0.00 }
 
-  after_commit :generate_qbo_invoice, on: :create
-
-  def generate_qbo_invoice
-    QuickbooksSyncService.new.sync_invoice(invoice: self)
-  end
+  default_scope { order(invoice_date: :desc) }
 
   def qbo_link
     return if qbo_id.to_i.zero?

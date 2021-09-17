@@ -24,7 +24,7 @@
   = f.number_field :amount, step: 0.01, class: 'form-control', required: true
 .form-group
   = f.label t('line_item.title')
-= f.fields_for :line_items do |item_form|
+= f.fields_for :line_item do |item_form|
   .form-group
     = item_form.label :description, t('line_item.description')
     = item_form.text_field :description, class: 'form-control'

@@ -32,7 +32,7 @@ We are using Ruby 3.0.2
 
 Run:
 
-  bundle exec rake db:create db:migrate
+  bundle exec rake db:create db:migrate db:seed
 
 ### Run project
 

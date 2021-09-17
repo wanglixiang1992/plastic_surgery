@@ -3,5 +3,10 @@
   "amount": 4,
   "memo": "This is first invoice.",
   "invoice_number": "INV-1412",
-  "account_number": "ACC-1412"
+  "account_number": "ACC-1412",
+  "line_item": {
+    "description": "Item-1",
+    "unit_price": 2,
+    "quantity": 1
+  }
 }  

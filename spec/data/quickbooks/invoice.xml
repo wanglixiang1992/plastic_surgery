@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2018-03-14T20:10:10.659-07:00">
+  <Invoice domain="QBO" sparse="false">
+    <Id>23</Id>
+    <TxnDate>2021-09-17</TxnDate>
+    <Line>
+      <Description>Item-1a06210e320e1c85d5324a95784e3fbd</Description>
+      <Amount>4.0</Amount>
+      <DetailType>SalesItemLineDetail</DetailType>
+      <SalesItemLineDetail>
+        <UnitPrice>4.0</UnitPrice>
+        <Qty>1.0</Qty>  
+      </SalesItemLineDetail>
+    </Line>
+    <CustomerRef>64</CustomerRef>
+  </Invoice>
+</IntuitResponse>
