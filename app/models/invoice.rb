@@ -18,10 +18,6 @@ class Invoice < ApplicationRecord
   private
 
   def qbo_prefix
-    if Rails.env.production?
-      'https://qbo.intuit.com/app/'
-    else
-      'https://sandbox.qbo.intuit.com/app/'
-    end
+    'https://sandbox.qbo.intuit.com/app/'
   end
 end
