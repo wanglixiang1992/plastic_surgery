@@ -22,9 +22,7 @@ default: &default
   password: postgres
 
 development:
-  <<: *default
-  host: localhost
-  database: plastic_surgery_development
+  url: <%= ENV['DATABASE_URL'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -82,7 +80,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: plastic_surgery_production
-  username: plastic_surgery
-  password: <%= ENV['PLASTIC_SURGERY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
