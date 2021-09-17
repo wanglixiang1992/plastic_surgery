@@ -3,7 +3,7 @@
 class QuickbooksController < ApplicationController
   def authenticate
     redirect_uri = oauth_callback_quickbooks_url
-    grant_url = oauth2_client.auth_code.authorize_url(
+    grant_url = QB_OAUTH_CONSUMER.auth_code.authorize_url(
       redirect_uri: redirect_uri,
       response_type: 'code',
       state: SecureRandom.hex(12), scope: 'com.intuit.quickbooks.accounting'
