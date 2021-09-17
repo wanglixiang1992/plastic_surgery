@@ -1,0 +1,13 @@
+.card
+  .card-body
+    h3= t('invoice.new')
+    = form_for invoice, url: invoices_path, html: { id: 'invoice_form' } do |f|
+      - if invoice.errors.any?
+        .alert.alert-danger
+          ul
+            - invoice.errors.full_messages.each do |message|
+              li= message
+      = render 'invoices/form', invoice: invoice, customers: customers, f: f
+      .col-12.d-flex
+        = f.submit t('invoice.save'), class: 'btn btn-primary mr-10'
+        = link_to t('invoice.goto_main'), invoices_path, class: 'btn btn-default'

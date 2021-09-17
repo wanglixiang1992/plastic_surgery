@@ -1,0 +1,36 @@
+.form-group
+  = f.label :customer_id, t('invoice.customer')
+  = f.select :customer_id, 
+             options_for_select(customers.map { |c| [c.name, c.id] }, selected: f.object.customer_id), 
+             {},
+             { class: 'form-control' }
+.form-group
+  = f.label :invoice_date, t('invoice.invoice_date')
+  = f.date_field :invoice_date, class: 'form-control', required: true
+.form-group
+  = f.label :due_date, t('invoice.due_date')
+  = f.date_field :due_date, class: 'form-control'
+.form-group
+  = f.label :invoice_number, t('invoice.invoice_number')
+  = f.text_field :invoice_number, class: 'form-control'
+.form-group
+  = f.label :account_number, t('invoice.account_number')
+  = f.text_field :account_number, class: 'form-control'
+.form-group
+  = f.label :memo, t('invoice.memo')
+  = f.text_field :memo, class: 'form-control'
+.form-group
+  = f.label :amount, t('invoice.amount')
+  = f.number_field :amount, step: 0.01, class: 'form-control', required: true
+.form-group
+  = f.label t('line_item.title')
+= f.fields_for :line_items do |item_form|
+  .form-group
+    = item_form.label :description, t('line_item.description')
+    = item_form.text_field :description, class: 'form-control'
+  .form-group
+    = item_form.label :unit_price, t('line_item.unit_price')
+    = item_form.text_field :unit_price, class: 'form-control'
+  .form-group
+    = item_form.label :quantity, t('line_item.quantity')
+    = item_form.text_field :quantity, class: 'form-control'

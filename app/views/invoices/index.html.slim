@@ -1,0 +1,6 @@
+.invoice-header
+  .title
+    = t('invoice.all')
+    = " (#{invoices.count})"
+  = link_to t('invoice.new'), new_invoice_path, class: 'btn btn-primary'
+= render partial: 'invoices/list', locals: { invoices: invoices }

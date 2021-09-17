@@ -1,0 +1,19 @@
+tr
+  td
+    = invoice.customer.name
+  td
+    = invoice.invoice_date
+  td
+    = invoice.due_date
+  td
+    = invoice.invoice_number
+  td
+    = invoice.account_number
+  td
+    = invoice.memo
+  td
+    = t('invoice.currency', amount: invoice.amount)
+  td
+    - if invoice.qbo_link
+      = link_to t('invoice.view'), invoice.qbo_link, target: '_blank'
+    

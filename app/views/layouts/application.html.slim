@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title= t('app_title')
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    .header
+      .header-title= t('app_title')
+      .header-navbar
+      - qbo_credential = QuickbooksCredential.active.first
+      - if qbo_credential&.active?
+        = link_to t('quickbooks.disconnect'), disconnect_quickbook_path(qbo_credential), class: 'nav-item'
+      - else
+        = link_to t('quickbooks.connect'), authenticate_quickbooks_path, class: 'nav-item'
+    - if notice
+      p.alert.alert-success= notice
+    - if alert
+      p.alert.alert-danger= alert
+    = yield

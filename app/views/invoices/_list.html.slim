@@ -1,0 +1,21 @@
+table.table.table-striped
+  thead
+    tr
+      th scope="col"
+        = t('invoice.customer')
+      th scope="col"
+        = t('invoice.invoice_date')
+      th scope="col"
+        = t('invoice.due_date')
+      th scope="col"
+        = t('invoice.invoice_number')
+      th scope="col"
+        = t('invoice.account_number')
+      th scope="col"
+        = t('invoice.memo')
+      th scope="col"
+        = t('invoice.amount')
+      th scope="col"
+  tbody
+    - invoices.each do |invoice|
+      = render partial: 'invoices/item', locals: { invoice: invoice }
